@@ -9,8 +9,20 @@ const User = {
     getAll: (callback) =>{
         const sql = "SELECT * FROM users";
         db.query(sql, callback);
+    },
+
+    update:(id,name, age, password, callback) =>{
+        const sql = "UPDATE users SET name=?, age=?, password=? WHERE id=?";
+        db.query(sql, [name, age, password, id], callback)
+    },
+
+    delete:(id,callback) =>{
+        const sql = "DELETE FROM users WHERE id=?"
+        db.query(sql,[id] ,callback)
     }
+
 };
+
 
 
 module.exports = User;
